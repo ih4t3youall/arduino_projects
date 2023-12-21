@@ -6,12 +6,14 @@
 // Create Amplitude Shift Keying Object
 RH_ASK rf_driver;
  
-#define LED 7
+#define light_switch 7
+//recevier pin is 11
+
 void setup()
 {
     // Initialize ASK Object
     rf_driver.init();
-    pinMode(LED, OUTPUT);
+    pinMode(light_switch, OUTPUT);
     
 
     // Setup Serial Monitor
@@ -21,7 +23,7 @@ void setup()
 void loop()
 {
     // Set buffer to size of expected message
-    uint8_t buf[11];
+    uint8_t buf[12];
     uint8_t buflen = sizeof(buf);
     // Check if received packet is correct size
     if (rf_driver.recv(buf, &buflen))
@@ -30,9 +32,9 @@ void loop()
       // Message received with valid checksum
       Serial.print("Message Received: ");
       Serial.println((char*)buf);         
-      digitalWrite(LED, HIGH);
+      digitalWrite(light_switch, HIGH);
       delay(1000);
-      digitalWrite(LED, LOW);
+      digitalWrite(light_switch, LOW);
 
     }
 }

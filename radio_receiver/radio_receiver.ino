@@ -5,6 +5,7 @@
  
 // Create Amplitude Shift Keying Object
 RH_ASK rf_driver;
+//radio pin is 11
  
 #define LED 7
 void setup()

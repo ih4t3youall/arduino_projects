@@ -3,11 +3,6 @@ int FirstShotX , FirstShotY;
 #include <RH_ASK.h>
 #include <SPI.h>
 
-int izq = 529;
-int der = 494;
-
-const String X = "x";
-
 RH_ASK rf_driver;
 
 void setup()
@@ -54,10 +49,10 @@ void loop()
   {
     switch(i)
     {
-      case 2: sendMessage("dfw\0"); break;
+      case 2: sendMessage("lliv\0"); break;
       case 3: Serial.println("--------> Button B"); break;
-      case 4: sendMessage("dbk\0"); break;
-      case 5: sendMessage("dst\0"); break;
+      case 4: sendMessage("lpie\0"); break;
+      case 5:  Serial.println("--------> Button abajo"); break;
       case 6: Serial.println("--------> Button E"); break;
       case 7: Serial.println("--------> Button F"); break;
       case 8: Serial.println("--------> Button KEY"); break;
@@ -70,13 +65,11 @@ void loop()
   {
     FirstShotX = sensorValue;
   }
-  String sendX = X + (sensorValue) + "\0";
-  sendMessage(sendX);
-
 
   sensorValue = analogRead(A1);
   if(FirstShotY == 0)
   {
     FirstShotY = sensorValue;
   }
+  delay(200);
 }
